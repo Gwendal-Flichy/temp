@@ -1,31 +1,40 @@
 #include "CapitalShip.h"
 
+#include <iostream>
+
 #include "Game.h"
 
 
 Vec2 getTurretSize() { return { 32.f, 32.f }; }
 
 Turret::Turret(IGameObjectContainer& game,  const Vec2& position)
-    : IGameObject(game)
+    : IGameObject(game.getGame())
     , m_position(position)
+	, owner(static_cast<CapitalShip*>(&game))
 {
+
+
+
     m_sprite.setTexture(getOwner().getGame().getTextureCache().getTexture("Turret.png"));
+    
 }
 
 void Turret::handleInputs(const sf::Event& event)
 {
-
+    
 }
 
 void Turret::update(float deltaTime)
 {
+    m_position = { owner->m_position.x - 16.f ,owner->m_position.y - 32.f };
     
     
 }
 
 void Turret::render(sf::RenderWindow& window)
 {
-    m_sprite.setOrigin(getTurretSize().x / 2.f, getTurretSize().y / 2.f);
+    m_sprite.setOrigin(getTurretSize().x / 2.f, getTurretSize().y / 2.f );
+    
     m_sprite.setPosition(m_position.x, m_position.y);
     window.draw(m_sprite);
 }
@@ -64,7 +73,7 @@ CapitalShip::CapitalShip(IGameObjectContainer& game, const Vec2& position)
     , m_isTurningRight(false)
 {
     m_sprite.setTexture(getOwner().getGame().getTextureCache().getTexture("CapitalShip.png"));
-    new Turret(game, m_position + Vec2(-16.f, -32.f));
+    new Turret(*this, m_position + Vec2(-16.f, -32.f));
 }
 
 void CapitalShip::handleInputs(const sf::Event& event)

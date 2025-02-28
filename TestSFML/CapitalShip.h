@@ -6,6 +6,9 @@
 
 class IGameObjectContainer;
 
+class CapitalShip;
+
+
 class Turret : public IGameObject
 {
 public:
@@ -21,6 +24,8 @@ private:
     sf::Sprite m_sprite;
     
     Vec2 m_position;
+
+    CapitalShip* owner;
 };
 
 class CapitalShip : public IGameObjectCompound
@@ -37,7 +42,8 @@ public:
     void die();
     virtual Game& getGame() override { return this->getOwner().getGame(); }
     
-
+    Vec2 m_position;
+    float m_angle;
 private:
     sf::Sprite m_sprite;
 
@@ -51,8 +57,8 @@ private:
     bool m_isDead;
 
     //  Physics
-    float m_angle;
-    Vec2 m_position;
+    
+    
     Vec2 m_velocity;
 };
 
