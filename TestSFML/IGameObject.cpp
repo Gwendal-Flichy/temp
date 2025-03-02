@@ -62,7 +62,10 @@ void IGameObjectContainer::_deferedAddObjects()
     m_toBeAddedGameObjects.clear();
 }
 
-
+std::vector<IGameObject*> IGameObjectContainer::getAllGameOjects() const
+{
+    return m_allGameObjects;
+}
 
 
 IGameObject::IGameObject(IGameObjectContainer& owner) : m_owner(owner)
@@ -101,3 +104,4 @@ IGameObjectCompound::IGameObjectCompound(IGameObjectContainer& owner)
     : IGameObject(owner)
 {
 }
+

@@ -33,6 +33,7 @@ void Turret::update(float deltaTime)
 
 void Turret::render(sf::RenderWindow& window)
 {
+    
     m_sprite.setOrigin(getTurretSize().x / 2.f, getTurretSize().y / 2.f );
     
     m_sprite.setPosition(m_position.x, m_position.y);

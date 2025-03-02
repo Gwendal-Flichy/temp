@@ -11,7 +11,7 @@ class IGameObject;
 #define private_function private
 #define private_friend_function(Cls) private
 
-class Game : public IGameObjectContainer
+class Game : public ::IGameObjectContainer
 {
 public:
     friend class IGameObject;
@@ -37,6 +37,6 @@ private_function:
     void renderBoundingBox();
 
 private_members:
-    sf::RenderWindow m_window;
+    ::sf::RenderWindow m_window;
     TextureCache m_textureCache;
 };

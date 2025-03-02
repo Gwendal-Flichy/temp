@@ -17,6 +17,11 @@ namespace BT
       , Failed
       , Running
     };
+    enum Operation
+    {
+         sup
+    	,inf
+    };
 
     class RootNode;
 
@@ -202,6 +207,8 @@ namespace BT
     private:
         bool m_isTickingChildNode;
     };
+
+
 
     class ControlNode;
 

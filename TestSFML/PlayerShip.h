@@ -18,7 +18,9 @@ public:
     virtual GameObjectType gameObjectType() override;
     void takeDamage(int dmg = 1);
     void die();
-
+    Vec2 getPositon() const;
+    int getPV() const;
+    float getAngle() const;
 private:
     sf::Sprite m_sprite;
 

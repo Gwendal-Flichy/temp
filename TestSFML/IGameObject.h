@@ -31,6 +31,7 @@ public:
     void _deferedAddObject(IGameObject*);
     void _deferedAddObjects();
     void _cleanObject();
+    std::vector<IGameObject*> getAllGameOjects() const;
     ~IGameObjectContainer();
 
     virtual Game& getGame() = 0;
@@ -51,6 +52,7 @@ public:
     virtual void update(float deltaTime) = 0;
     virtual void render(sf::RenderWindow& window) = 0;
     virtual AABB getBoundingBox() const = 0;
+    
     virtual GameObjectType gameObjectType() = 0;
     void destroy();
     IGameObjectContainer& getOwner() { return m_owner; }

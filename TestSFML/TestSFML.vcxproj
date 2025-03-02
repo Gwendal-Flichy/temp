@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Barrier.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="CapitalShip.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fireball.cpp" />
@@ -147,22 +148,28 @@
     <ClCompile Include="GameCollision.cpp" />
     <ClCompile Include="IGameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="melee.cpp" />
     <ClCompile Include="MyMath.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="TextureCache.cpp" />
+    <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Barrier.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossBehavior.h" />
     <ClInclude Include="CapitalShip.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Fireball.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="IGameObject.h" />
+    <ClInclude Include="melee.h" />
     <ClInclude Include="MyMath.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="TextureCache.h" />
+    <ClInclude Include="Tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

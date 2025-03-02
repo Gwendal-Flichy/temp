@@ -1,4 +1,8 @@
 #pragma once
+#include <algorithm>
+#include  <cmath>
+
+#include <vector>
 
 struct Vec2
 {
@@ -27,3 +31,10 @@ struct AABB
 };
 
 bool doesIntersect(const AABB& b1, const AABB& b2);
+
+
+
+
+
+
+

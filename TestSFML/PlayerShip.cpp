@@ -2,6 +2,7 @@
 
 #include "Game.h"
 #include "Fireball.h"
+#include "melee.h"
 
 
 // set de valeur qui va bien pour un vaisseau.
@@ -29,11 +30,12 @@ PlayerShip::PlayerShip(IGameObjectContainer& game, const Vec2& position)
     , m_isAccelerating(false)
 {
     m_sprite.setTexture(getOwner().getGame().getTextureCache().getTexture("PlayerShip.bmp"));
+    new Melee(m_owner, this, 0.f, 50.f, -1.f, 180.f);
 }
 
 void PlayerShip::handleInputs(const sf::Event& event)
 {
-    if (event.type == sf::Event::KeyPressed)
+    //if (event.type == sf::Event::KeyPressed) toggle
     m_isAccelerating = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
     m_isTurningLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
     m_isTurningRight = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
@@ -41,6 +43,7 @@ void PlayerShip::handleInputs(const sf::Event& event)
 
 void PlayerShip::update(float deltaTime)
 {
+    
     if (m_isTurningLeft) m_angle -= getPlayerShipRateOfTurn();
     if (m_isTurningRight) m_angle += getPlayerShipRateOfTurn();
 
@@ -49,13 +52,17 @@ void PlayerShip::update(float deltaTime)
         acceleration = -getPlayerShipFluidFrictionCoef() * m_velocity;
 
     if (m_isAccelerating)
-        acceleration += getPlayerShipThrust() * Vec2{std::cos(m_angle), std::sin(m_angle) };
+    {
+	    acceleration += getPlayerShipThrust() * Vec2{std::cos(m_angle), std::sin(m_angle) };
+        
+    }
      
     m_position += m_velocity * deltaTime;
     m_velocity += acceleration * deltaTime;
 
     if (m_velocity.getLength() > getPlayerShipMaxVelocity())
         m_velocity = m_velocity * (getPlayerShipMaxVelocity() / m_velocity.getLength());
+   
 }
 
 void PlayerShip::render(sf::RenderWindow& window)
@@ -103,3 +110,17 @@ void PlayerShip::die()
     destroy();
 }
 
+Vec2 PlayerShip::getPositon() const
+{
+    return m_position;
+}
+
+int PlayerShip::getPV() const
+{
+    return m_PV;
+}
+
+float PlayerShip::getAngle() const
+{
+    return m_angle;
+}
